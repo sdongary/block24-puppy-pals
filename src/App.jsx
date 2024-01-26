@@ -7,15 +7,18 @@ function App() {
   
   const [puppies, setPuppies] = useState(puppyList);
   const [featPupId, setFeatPupId] = useState(null);
+  const featuredPup = puppies.find((pup)=> pup.id === featPupId); 
+  console.log(featuredPup);
   
   //console.log("puppyList: ", puppies);
 
-  function handleClick(id){
+  function handleClick(puppy){
+    console.log("puppy id: ", puppy.id)
     setFeatPupId(id);
-    console.log(featPupId);
+    ;
     }
 
-  const featuredPup = puppies.find((pup)=> pup.id === featPupId); 
+  //const featuredPup = puppies.find((pup)=> pup.id === featPupId); 
   console.log(featPupId)
 
   return (
@@ -23,14 +26,16 @@ function App() {
       { 
         puppies.map((puppy) => {
           return (
-          <p onClick={() => 
-            setFeatPupId(puppy.id)} 
-            key={puppy.id}>{puppy.name}
-          </p>
+            <p onClick={handleClick} key={puppy.id}>{puppy.name}</p>
           );
         })
       }
 
+{
+        puppies.map((puppy) => {
+             return 
+           })
+       }
 {featPupId && (
           <div>
             <h2>{featuredPup.name}</h2>
@@ -40,6 +45,7 @@ function App() {
             </ul>
           </div>
         )}
+        
     </div>
   )
 }
